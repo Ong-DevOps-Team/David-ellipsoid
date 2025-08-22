@@ -13,24 +13,24 @@ class Settings:
             self.secrets = {}
         
         # Database settings
-        self.db_username: str = self.secrets.get("DB_USERNAME", "")
-        self.db_password: str = self.secrets.get("DB_PASSWORD", "")
-        self.fernet_key: str = self.secrets.get("FERNET_KEY", "")
+        self.db_username: str = os.getenv("DB_USERNAME", self.secrets.get("DB_USERNAME", ""))
+        self.db_password: str = os.getenv("DB_PASSWORD", self.secrets.get("DB_PASSWORD", ""))
+        self.fernet_key: str = os.getenv("FERNET_KEY", self.secrets.get("FERNET_KEY", ""))
         self.db_server: str = "geog495db.database.windows.net"
         self.db_name: str = "EllipsoidLabs"
         
         # API keys
-        self.openai_api_key: str = self.secrets.get("OPENAI_API_KEY", "")
-        self.aws_access_key_id: str = self.secrets.get("AWS_ACCESS_KEY_ID", "")
-        self.aws_secret_access_key: str = self.secrets.get("AWS_SECRET_ACCESS_KEY", "")
-        self.esri_api_key: str = self.secrets.get("ESRI_API_KEY", "")
-        self.shipengine_api_key: str = self.secrets.get("SHIPENGINE_API_KEY", "")
+         elf.openai_api_key: str = os.getenv("OPENAI_API_KEY", self.secrets.get("OPENAI_API_KEY", ""))
+        self.aws_access_key_id: str = os.getenv("AWS_ACCESS_KEY_ID", self.secrets.get("AWS_ACCESS_KEY_ID", ""))
+        self.aws_secret_access_key: str = os.getenv("AWS_SECRET_ACCESS_KEY", self.secrets.get("AWS_SECRET_ACCESS_KEY", ""))
+        self.esri_api_key: str = os.getenv("ESRI_API_KEY", self.secrets.get("ESRI_API_KEY", ""))
+        self.shipengine_api_key: str = os.getenv("SHIPENGINE_API_KEY", self.secrets.get("SHIPENGINE_API_KEY", ""))
         
         # MongoDB
-        self.mongo_connection_string: str = self.secrets.get("MONGO_CONNECTION_STRING", "")
-        
+        self.mongo_connection_string: str = os.getenv("MONGO_CONNECTION_STRING", self.secrets.get("MONGO_CONNECTION_STRING", ""))
+
         # JWT settings
-        self.jwt_secret_key: str = self.secrets.get("JWT_SECRET_KEY", "your-secret-key-change-in-production")
+        self.jwt_secret_key: str = os.getenv("JWT_SECRET_KEY", self.secrets.get("JWT_SECRET_KEY", "your-secret-key-change-in-production"))
         self.jwt_algorithm: str = "HS256"
         self.access_token_expire_minutes: int = 30
         
