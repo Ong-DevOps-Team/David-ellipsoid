@@ -8,17 +8,20 @@ import sys
 import datetime
 from pathlib import Path
 
-# Add parent directory to path to import modules
-sys.path.append(str(Path(__file__).parent.parent))
+# Ensure backend is on sys.path
+BASE_DIR = Path(__file__).resolve().parent
+PARENT_DIR = BASE_DIR.parent
+if str(PARENT_DIR) not in sys.path:
+    sys.path.append(str(PARENT_DIR))
 
-from auth.auth_service import AuthService, get_current_user
-from models.user_models import User, UserLogin, UserResponse
-from models.chat_models import ChatMessage, ChatRequest, ChatResponse, SavedChat, SavedChatList
-from services.chatbot_service import ChatbotService
-from services.rag_service import RAGService
-from services.mongo_service import MongoService
-from config.settings import get_settings
-from logging_system import info, error, warning, critical
+from backend.auth.auth_service import AuthService, get_current_user
+from backend.models.user_models import User, UserLogin, UserResponse
+from backend.models.chat_models import ChatMessage, ChatRequest, ChatResponse, SavedChat, SavedChatList
+from backend.services.chatbot_service import ChatbotService
+from backend.services.rag_service import RAGService
+from backend.services.mongo_service import MongoService
+from backend.config.settings import get_settings
+from backend.logging_system import info, error, warning, critical
 
 app = FastAPI(title="Ellipsoid Labs API", version="1.0.0")
 
