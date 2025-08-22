@@ -20,7 +20,7 @@ class Settings:
         self.db_name: str = "EllipsoidLabs"
         
         # API keys
-         elf.openai_api_key: str = os.getenv("OPENAI_API_KEY", self.secrets.get("OPENAI_API_KEY", ""))
+        self.openai_api_key: str = os.getenv("OPENAI_API_KEY", self.secrets.get("OPENAI_API_KEY", ""))
         self.aws_access_key_id: str = os.getenv("AWS_ACCESS_KEY_ID", self.secrets.get("AWS_ACCESS_KEY_ID", ""))
         self.aws_secret_access_key: str = os.getenv("AWS_SECRET_ACCESS_KEY", self.secrets.get("AWS_SECRET_ACCESS_KEY", ""))
         self.esri_api_key: str = os.getenv("ESRI_API_KEY", self.secrets.get("ESRI_API_KEY", ""))
