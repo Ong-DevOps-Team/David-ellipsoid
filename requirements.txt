@@ -1,0 +1,30 @@
+# Core FastAPI and web framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Authentication and security
+python-jose[cryptography]
+passlib[bcrypt]
+
+# Database connections
+pyodbc
+pymongo
+
+# AI and ML services
+openai
+boto3
+
+# Geographic NER (spaCy and models)
+spacy==3.7.2
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+
+# HTTP client for testing and external APIs
+httpx
+
+# Configuration and utilities
+toml
+
+# Testing
+pytest
+pytest-asyncio
